@@ -1,0 +1,15 @@
+{
+    "plugins": [
+        "prettier-plugin-svelte",
+        "prettier-plugin-tailwindcss",
+        "@trivago/prettier-plugin-sort-imports"
+    ],
+    "pluginSearchDirs": ["."],
+    "overrides": [{ "files": "*.svelte", "options": { "parser": "svelte" } }],
+    "tailwindConfig": "./tailwind.config.js",
+
+    "sortingMethod": "lineLength",
+    "importOrder": ["^components/(.*)$", "^[./]"],
+    "importOrderSeparation": true,
+    "importOrderSortSpecifiers": true
+}
