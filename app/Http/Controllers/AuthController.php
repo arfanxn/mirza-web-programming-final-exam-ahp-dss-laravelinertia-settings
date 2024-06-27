@@ -25,7 +25,7 @@ class AuthController extends Controller
 
     public function providerCallback(Request $request, string $provider)
     {
-        $socialiteUser = Socialite::driver($provider)->stateless()->user();
+        $socialiteUser = Socialite::driver($provider)->user();
 
         $user = User::query()->where('email', $socialiteUser->email)->first();
         if (is_null($user)) {
