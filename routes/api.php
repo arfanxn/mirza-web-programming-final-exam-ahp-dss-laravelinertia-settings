@@ -1,6 +1,8 @@
 <?php
 
-use Illuminate\Http\Request;
+use App\Http\Controllers\API\AuthController;
+use App\Http\Controllers\API\GoalController;
+use App\Http\Controllers\API\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,6 +16,31 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+
+Route::middleware('guest')->group(function () {
+    Route::prefix('/login')->group(function () {
+        Route::post('', [AuthController::class, 'handleLogin']);
+    });
+});
+
+Route::middleware(['auth:sanctum', 'verified'])->group(function () {
+    Route::get('/', [GoalController::class, 'index'])->name('dashboard');
+
+    Route::delete('/logout', [AuthController::class, 'handleLogout']);
+
+    Route::prefix('/users')->group(function () {
+        Route::put('/{id}', [UserController::class, 'update']);
+
+        Route::prefix('/self')->group(function () {
+            Route::get('', [UserController::class, 'showSelf']);
+        });
+    });
+
+    Route::prefix('/goals')->group(function () {
+        Route::get('', [GoalController::class, 'index']);
+        Route::post('', [GoalController::class, 'store']);
+        Route::get('/{goal}', [GoalController::class, 'show']);
+        Route::put('/{goal}', [GoalController::class, 'update']);
+        Route::delete('/{goal}', [GoalController::class, 'destroy']);
+    });
 });
