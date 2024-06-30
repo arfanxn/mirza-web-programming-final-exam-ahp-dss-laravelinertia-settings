@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UpdateUserRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -23,16 +24,8 @@ class UserController extends Controller
         return Inertia::render('Users/EditSelf', compact('user'));
     }
 
-    public function update(Request $request, string $id)
+    public function update(UpdateUserRequest $request, string $id)
     {
-        $request->validate([
-            'name' => ['nullable', 'min:2'],
-            'email' => ['nullable', 'email'],
-            'current_password' => ['nullable', 'min:8'],
-            'new_password' => ['nullable', 'min:8'],
-            'new_password_confirmation' => ['nullable', 'same:new_password'],
-        ]);
-
         $user = User::query()->where('id', $id)->first();
         $user->name = $request->get('name', $user->name);
         $user->email_verified_at = $request->email == $user->email ? $user->email_verified_at : null; // reset email verified at if the email is changed
