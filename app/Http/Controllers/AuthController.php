@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\LoginRequest;
 use App\Models\User;
 use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Support\Str;
@@ -47,12 +48,9 @@ class AuthController extends Controller
         return Inertia::render('Auths/Login');
     }
 
-    public function handleLogin(Request $request)
+    public function handleLogin(LoginRequest $request)
     {
-        $input = $request->validate([
-            'email' => ['required', 'email'],
-            'password' => ['required', 'min:8'],
-        ]);
+        $input = $request->validated();
 
         if (!Auth::attempt($input)) {
             return redirect()->back()->withErrors([
