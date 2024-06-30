@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\UpdateUserRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -20,16 +21,8 @@ class UserController extends Controller
         ]);
     }
 
-    public function update(Request $request, string $id)
+    public function update(UpdateUserRequest $request, string $id)
     {
-        $request->validate([
-            'name' => ['nullable', 'min:2'],
-            'email' => ['nullable', 'email'],
-            'current_password' => ['nullable', 'min:8'],
-            'new_password' => ['nullable', 'min:8'],
-            'new_password_confirmation' => ['nullable', 'same:new_password'],
-        ]);
-
         $user = User::query()->where('id', $id)->first();
         $user->name = $request->get('name', $user->name);
         $user->email_verified_at = $request->get('email', $user->email) == $user->email

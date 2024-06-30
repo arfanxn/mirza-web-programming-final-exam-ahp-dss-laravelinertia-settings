@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API;
 
 use App\Enums\Auth\TokenName;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\LoginRequest;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
@@ -20,13 +21,10 @@ class AuthController extends Controller
      * @param \Illuminate\Http\Request $request The HTTP request object
      * @return \Illuminate\Http\JsonResponse The JSON response containing the user data and access token
      */
-    public function handleLogin(Request $request)
+    public function handleLogin(LoginRequest $request)
     {
         // Validate the request data
-        $input = $request->validate([
-            'email' => ['required', 'email'],
-            'password' => ['required', 'min:8'],
-        ]);
+        $input = $request->validated();
 
         // Attempt to authenticate the user
         if (!Auth::attempt($input)) {
@@ -47,7 +45,7 @@ class AuthController extends Controller
             'message' => 'Login successful.',
             'user' => array_merge(
                 $request->user()->toArray(),
-                ['token' => $token->plainTextToken]
+                ['access_token' => $token->plainTextToken]
             )
         ]);
     }
