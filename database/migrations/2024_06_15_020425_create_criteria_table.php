@@ -18,6 +18,7 @@ return new class extends Migration
             $table->boolean('impact_type');
             $table->unsignedTinyInteger('index')->nullable();
             $table->unsignedTinyInteger('weight')->nullable();
+            $table->float('weight_percentage')->nullable();
             $table->timestamps();
 
             $table->foreign('goal_id')->references('id')->on('goals')->onDelete('CASCADE');

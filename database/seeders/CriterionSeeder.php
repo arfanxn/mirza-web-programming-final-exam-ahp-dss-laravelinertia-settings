@@ -27,6 +27,7 @@ class CriterionSeeder extends Seeder
                 'impact_type' => ImpactType::Cost,
                 'index' => 0,
                 'weight' => 2,
+                'weight_percentage' => 0.2,
                 'created_at' => $createdAtStr
             ],
             [
@@ -36,6 +37,7 @@ class CriterionSeeder extends Seeder
                 'impact_type' => ImpactType::Benefit,
                 'index' => 1,
                 'weight' => 5,
+                'weight_percentage' => 0.3,
                 'created_at' => $createdAtStr
             ],
             [
@@ -45,6 +47,7 @@ class CriterionSeeder extends Seeder
                 'impact_type' => ImpactType::Benefit,
                 'index' => 2,
                 'weight' => 1,
+                'weight_percentage' => 0.1,
                 'created_at' => $createdAtStr
             ],
             [
@@ -54,6 +57,7 @@ class CriterionSeeder extends Seeder
                 'impact_type' => ImpactType::Benefit,
                 'index' => 3,
                 'weight' => 4,
+                'weight_percentage' => 0.2,
                 'created_at' => $createdAtStr
             ],
             [
@@ -63,6 +67,7 @@ class CriterionSeeder extends Seeder
                 'impact_type' => ImpactType::Benefit,
                 'index' => 4,
                 'weight' => 3,
+                'weight_percentage' => 0.2,
                 'created_at' => $createdAtStr
             ],
         ]);

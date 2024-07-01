@@ -30,6 +30,7 @@ class Criterion extends Model
         'impact_type',
         'index',
         'weight',
+        'weight_percentage'
     ];
 
     /**
