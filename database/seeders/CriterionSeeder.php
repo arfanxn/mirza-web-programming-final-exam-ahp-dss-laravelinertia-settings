@@ -26,7 +26,7 @@ class CriterionSeeder extends Seeder
                 'name' => 'Price',
                 'impact_type' => ImpactType::Cost,
                 'index' => 0,
-                'weight' => null,
+                'weight' => 2,
                 'created_at' => $createdAtStr
             ],
             [
@@ -35,7 +35,7 @@ class CriterionSeeder extends Seeder
                 'name' => 'Sensor size',
                 'impact_type' => ImpactType::Benefit,
                 'index' => 1,
-                'weight' => null,
+                'weight' => 5,
                 'created_at' => $createdAtStr
             ],
             [
@@ -44,7 +44,7 @@ class CriterionSeeder extends Seeder
                 'name' => 'Frame rates',
                 'impact_type' => ImpactType::Benefit,
                 'index' => 2,
-                'weight' => null,
+                'weight' => 1,
                 'created_at' => $createdAtStr
             ],
             [
@@ -53,7 +53,7 @@ class CriterionSeeder extends Seeder
                 'name' => 'Screen size inches',
                 'impact_type' => ImpactType::Benefit,
                 'index' => 3,
-                'weight' => null,
+                'weight' => 4,
                 'created_at' => $createdAtStr
             ],
             [
@@ -62,7 +62,7 @@ class CriterionSeeder extends Seeder
                 'name' => 'Screen brightness nits',
                 'impact_type' => ImpactType::Benefit,
                 'index' => 4,
-                'weight' => null,
+                'weight' => 3,
                 'created_at' => $createdAtStr
             ],
         ]);
