@@ -15,14 +15,6 @@ export default defineConfig({
             // prebundleSvelteLibraries: true,
         }),
     ],
-    build: {
-        rollupOptions: {
-            input: {
-                app: "resources/js/app.js",
-            },
-        },
-        outDir: "public/js",
-    },
     css: {
         postcss: {
             plugins: [tailwindcss, autoprefixer],
