@@ -68,7 +68,7 @@ class GoalService
                     'impact_type' => ImpactType::Cost,
                     'index' => $index,
                 ],
-                range(0, 2)
+                range(0, 4)
             );
             $this->criterionRepository->insert($criteriaData);
             $criterionIds = $this->criterionRepository->whereGoalId($goalId)->select('id')->pluck('id');
@@ -79,7 +79,7 @@ class GoalService
                     'name' => 'Alternative ' . strval($index + 1),
                     'index' => $index
                 ],
-                range(0, 2)
+                range(0, 4)
             );
             $this->alternativeRepository->insert($alternativesData);
             $alternativeIds = $this->alternativeRepository->whereGoalId($goalId)->select('id')->pluck('id');
