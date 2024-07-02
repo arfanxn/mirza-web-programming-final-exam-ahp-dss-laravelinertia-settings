@@ -38,6 +38,15 @@ class GoalController extends Controller
         ]);
     }
 
+    public function rankingization(Request $request, Goal $goal)
+    {
+        $rankings = $this->service->rankingization($goal);
+        return response()->json([
+            'message' => 'Goal rankingization retrieved successfully.',
+            'rankings' => $rankings
+        ]);
+    }
+
     /**
      * store
      *

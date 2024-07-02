@@ -16,6 +16,16 @@ class GoalRepository
         //
     }
 
+    /**
+     * find
+     * @param string $id
+     * @return EloquentBuilder
+     */
+    public function find($id)
+    {
+        return Goal::query()->where('id', $id)->first();
+    }
+
     public function paginate($options)
     {
         $options = collect($options);

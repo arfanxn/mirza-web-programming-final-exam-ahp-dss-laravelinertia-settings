@@ -40,6 +40,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         Route::get('', [GoalController::class, 'index']);
         Route::post('', [GoalController::class, 'store']);
         Route::get('/{goal}', [GoalController::class, 'show']);
+        Route::get('/{goal}/rankingization', [GoalController::class, 'rankingization']);
         Route::put('/{goal}', [GoalController::class, 'update']);
         Route::delete('/{goal}', [GoalController::class, 'destroy']);
     });
